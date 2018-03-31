@@ -26,7 +26,7 @@ struct mail_user_data
 	int unsigned bytesdone;
 };
 
-/* ÕâÊÇÒ»×é²âÊÔ´úÂë */
+/* è¿™æ˜¯ä¸€ç»„æµ‹è¯•ä»£ç  */
 static int csum(int first, ...);
 static void a(int i, int j, int k, int l);
 static void wchartm(void);
@@ -42,18 +42,18 @@ static int initmail(struct mail *mail);
 static void destroymail(struct mail *mail);
 static int unsigned catmail(struct mail * __restrict mail, const unsigned char * __restrict format, ...);
 static int unsigned catmailattachment(struct mail * __restrict mail, const wchar_t *attachmentfile);
-// ·µ»ØÊµ¼Ê×Ö½ÚÊı
+// è¿”å›å®é™…å­—èŠ‚æ•°
 static int unsigned tomailbase64w(unsigned char * __restrict dest, unsigned int destsizebytes, 
 	const wchar_t *src, unsigned int srcwchars);
 static int unsigned tomailbase64(unsigned char * __restrict dest, unsigned int destsizebytes, 
 	const unsigned char *src, unsigned int srcbytes);
-/* size ±íÊ¾°üº¬Ä©Î² '\0' */
+/* size è¡¨ç¤ºåŒ…å«æœ«å°¾ '\0' */
 static int  incmailsize(struct mail * __restrict mail, unsigned int incsizebytes);
 static int printmail(const struct mail *mail);
 static int unsigned callbackmail(void *ptr, int unsigned size, int unsigned nmemb, void *userp);
 static int sendmail(const struct mail * __restrict mail);
 
-/* ÒÔ NULL ±íÊ¾¿É±ä²ÎÊıµÄ½áÊø */
+/* ä»¥ NULL è¡¨ç¤ºå¯å˜å‚æ•°çš„ç»“æŸ */
 static int makemail(struct mail *__restrict mail,
 	const unsigned char *__restrict from, 
 	const unsigned char *__restrict to, 
@@ -63,9 +63,9 @@ static int makemail(struct mail *__restrict mail,
 	const unsigned char *__restrict password,
 	const unsigned char *__restrict content, ...);
 
-// Ò»ÏÂÕâÁ½ÌõcontentÔÚ±¾³ÌĞòÖĞµÄ quoted printable ±àÂëºÍÔÚ XE6 update1 ÖĞµÄ²»Í¬
-//(const unsigned char *)"TIdMessageBuilderPlain¿Ø¼ş±à¼­ÈËÔ±ÕâÊÇÎªÁËÊ¹ÓÃ»§ĞèÇó¶ø¿ª·¢µÄ£¬ÎûÎû£¡£¡Î´À´ÔÚÄÄ¶ù£¿Î´À´",
-//(const unsigned char *)"TIdMessageBuilderPlain¿Ø¼ş±à¼­ÈËÔ±ÕâÊÇÎªÁËÊ¹ÓÃ»§ĞèÇó¶ø¿ª·¢µÄ£¬ÎûÎû£¡£¡abcdefghijklmnopqrstuvwsyzabcdefghijklmnopqrstuv",
+// ä¸€ä¸‹è¿™ä¸¤æ¡contentåœ¨æœ¬ç¨‹åºä¸­çš„ quoted printable ç¼–ç å’Œåœ¨ XE6 update1 ä¸­çš„ä¸åŒ
+//(const unsigned char *)"TIdMessageBuilderPlainæ§ä»¶ç¼–è¾‘äººå‘˜è¿™æ˜¯ä¸ºäº†ä½¿ç”¨æˆ·éœ€æ±‚è€Œå¼€å‘çš„ï¼Œå˜»å˜»ï¼ï¼æœªæ¥åœ¨å“ªå„¿ï¼Ÿæœªæ¥",
+//(const unsigned char *)"TIdMessageBuilderPlainæ§ä»¶ç¼–è¾‘äººå‘˜è¿™æ˜¯ä¸ºäº†ä½¿ç”¨æˆ·éœ€æ±‚è€Œå¼€å‘çš„ï¼Œå˜»å˜»ï¼ï¼abcdefghijklmnopqrstuvwsyzabcdefghijklmnopqrstuv",
 
 int _tmain(int argc, _TCHAR* argv[])
 {
@@ -77,13 +77,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	makemail(&mail, 
 		(const unsigned char *)"iamtomboy@163.com", 
 		(const unsigned char *)"rubble@126.com", 
-		(const unsigned char *)"ÖĞÎÄ±êÌâ", 
+		(const unsigned char *)"ä¸­æ–‡æ ‡é¢˜", 
 		(const unsigned char *)"smtp.163.com",
 		(const unsigned char *)"iamtomboy",
-		(const unsigned char *)"wangxixuan",
-		//(const unsigned char *)"TIdMessageBuilderPlain¿Ø¼ş±à¼­ÈËÔ±ÕâÊÇÎªÁËÊ¹ÓÃ»§ĞèÇó¶ø¿ª·¢µÄ£¬ÎûÎû£¡£¡Î´À´ÔÚÄÄ¶ù£¿Î´À´",
-		(const unsigned char *)"TIdMessageBuilderPlain¿Ø¼ş±à¼­ÈËÔ±ÕâÊÇÎªÁËÊ¹ÓÃ»§ĞèÇó¶ø¿ª·¢µÄ£¬ÎûÎû£¡£¡abcdefghijklmnopqrstuvwsyzabcdefghijklmnopqrstuv",
-		L"D:\\msys\\changelog.txt", L"D:\\ÕÕÆ¬.bmp", L"D:\\3.txt", NULL);
+		(const unsigned char *)"abcdefghijk",
+		//(const unsigned char *)"TIdMessageBuilderPlainæ§ä»¶ç¼–è¾‘äººå‘˜è¿™æ˜¯ä¸ºäº†ä½¿ç”¨æˆ·éœ€æ±‚è€Œå¼€å‘çš„ï¼Œå˜»å˜»ï¼ï¼æœªæ¥åœ¨å“ªå„¿ï¼Ÿæœªæ¥",
+		(const unsigned char *)"TIdMessageBuilderPlainæ§ä»¶ç¼–è¾‘äººå‘˜è¿™æ˜¯ä¸ºäº†ä½¿ç”¨æˆ·éœ€æ±‚è€Œå¼€å‘çš„ï¼Œå˜»å˜»ï¼ï¼abcdefghijklmnopqrstuvwsyzabcdefghijklmnopqrstuv",
+		L"D:\\msys\\changelog.txt", L"D:\\ç…§ç‰‡.bmp", L"D:\\3.txt", NULL);
 	printmail(&mail);
 	sendmail(&mail);
 	destroymail(&mail);
@@ -132,10 +132,10 @@ static int unsigned catmail(struct mail * __restrict mail, const unsigned char *
 	bytes = _vscprintf((const char *)format, arg_ptr);
 	va_end(arg_ptr);
 
-	if(bytes == 0u) // ¾¡Ôç·µ»Ø
+	if(bytes == 0u) // å°½æ—©è¿”å›
 		return 0u;
 
-	// +1 ÊÇÎªÁË¸ø '\0' Áô³öÎ»ÖÃ
+	// +1 æ˜¯ä¸ºäº†ç»™ '\0' ç•™å‡ºä½ç½®
 	size = mail->leninbytes + bytes + 1;
 
 	if(size > mail->sizeinbytes) {
@@ -198,7 +198,7 @@ static int unsigned catmailattachment(struct mail * __restrict mail, const wchar
 	if((ct = findcontenttype(ext)) == NULL)
 		ct = findcontenttype(L".txt");
 
-	/* ²»ÖªµÀÎªÊ²Ã´ Indy 10 ·¢µÄÓÊ¼şÖĞ£¬name ºÍ filename ¶¼ÁíÆğÒ»ĞĞ£¬¶øÇÒÒÔ.¿ªÍ·£¬ÎÒ±È×ÅËüµÄÑù×Ó×ö£¬µ¼ÖÂÓÊ¼şµÄ¸½¼şÃû³Æ²»ÄÜÕı³£ÏÔÊ¾¡£ */
+	/* ä¸çŸ¥é“ä¸ºä»€ä¹ˆ Indy 10 å‘çš„é‚®ä»¶ä¸­ï¼Œname å’Œ filename éƒ½å¦èµ·ä¸€è¡Œï¼Œè€Œä¸”ä»¥.å¼€å¤´ï¼Œæˆ‘æ¯”ç€å®ƒçš„æ ·å­åšï¼Œå¯¼è‡´é‚®ä»¶çš„é™„ä»¶åç§°ä¸èƒ½æ­£å¸¸æ˜¾ç¤ºã€‚ */
 	catmail(mail, (const unsigned char *)"--%s\r\nContent-Type: %S;\r\n\tname=\"%s\"\r\n"
 	"Content-Transfer-Encoding: base64\r\n"
 	"Content-Disposition: attachment;\r\n\tfilename=\"%s\"\r\n\r\n",
@@ -212,7 +212,7 @@ static int unsigned catmailattachment(struct mail * __restrict mail, const wchar
 	return destsizebytes - 1u;
 }
 
-/* destsizebytes ÖÁÉÙÎª ((srcwchars * 2 - 1) / 3 + 1) * 4 + 1 + strlen("=?GB18030?B??=") 	·µ»ØÊµ¼Ê×Ö½ÚÊı */
+/* destsizebytes è‡³å°‘ä¸º ((srcwchars * 2 - 1) / 3 + 1) * 4 + 1 + strlen("=?GB18030?B??=") 	è¿”å›å®é™…å­—èŠ‚æ•° */
 static int unsigned tomailbase64w(unsigned char * __restrict dest, unsigned int destsizebytes, 
 	const wchar_t *src, unsigned int srcwchars)
 {
@@ -243,7 +243,7 @@ static int unsigned tomailbase64w(unsigned char * __restrict dest, unsigned int 
 	return srcbytes;
 }
 
-/* destsizebytes ÖÁÉÙÎª ((srcbytes - 1) / 3 + 1) * 4 + 1 + strlen("=?GB18030?B??=") 	·µ»ØÊµ¼Ê×Ö½ÚÊı */
+/* destsizebytes è‡³å°‘ä¸º ((srcbytes - 1) / 3 + 1) * 4 + 1 + strlen("=?GB18030?B??=") 	è¿”å›å®é™…å­—èŠ‚æ•° */
 static int unsigned tomailbase64(unsigned char * __restrict dest, unsigned int destsizebytes, 
 	const unsigned char *src, unsigned int srcbytes)
 {
@@ -290,7 +290,7 @@ static int printmail(const struct mail *mail)
 	int res = 0;
 	if((fp = _wfopen(L"D:\\dump.txt", L"wb")) == NULL)
 		return -1;
-	res = fprintf(fp, "dump of a mail:\r\n\tÈİÁ¿£º%u\r\n\t×Ö½Ú£º%u\r\n\t³¤¶È£º%u\r\n\tÄÚÈİ£º\r\n",
+	res = fprintf(fp, "dump of a mail:\r\n\tå®¹é‡ï¼š%u\r\n\tå­—èŠ‚ï¼š%u\r\n\té•¿åº¦ï¼š%u\r\n\tå†…å®¹ï¼š\r\n",
 		mail->sizeinbytes, mail->leninbytes, _mbslen(mail->message));
 	fwrite(mail->message, 1u, mail->leninbytes, fp);
 	fclose(fp);
@@ -556,22 +556,22 @@ static int toquotedprintable(struct mail * __restrict mail, const unsigned char 
 }
 
 /*--------------------------------------------------------------------------*
-º¯ÊıÃû×Ö           tobase64 - ¼ÓÃÜº¯Êı
-º¯ÊıÔ­ĞÍ           int unsigned tobase64(unsigned char *dest, unsigned int destsizebytes, const unsigned char *src, unsigned int srcbytes)
-º¯ÊıËùÔÚÍ·ÎÄ¼ş      crypt.h
-º¯ÊıµÄÏêÏ¸ÃèÊö      src£ºµÈ´ı±»¼ÓÃÜµÄÊı¾İ£»
-                  dest£º´æ·Å¼ÓÃÜºóµÄÊı¾İ£»
-				  srcbytes£º±»¼ÓÃÜÊı¾İµÄ×Ö½ÚÊı£¬Ò²¾ÍÊÇ³¤¶È£»
-				  destsizebytes£ºdestÖ¸ÏòµÄ»º³åÇøµÄ³¤¶È£¬¸ù¾İBase64±àÂëµÄÌØµã£¬
-				            destsizebytes = ((src - 1) / 3 + 1) * 4 + 1; º¯Êı¼ì²é
-			     	Õâ¸ö¹ØÏµ£¬Èç¹û destsizebytes µÄÖµĞ¡ÓÚ ((src - 1) / 3 + 1) * 4 + 1£¬Ôò·µ»Ø0¡£
-º¯Êı·µ»ØÖµ         ³É¹¦·µ»ØÊµ¼Ê³¤¶È£¬Ê§°Ü·µ»Ø 0¡£
+å‡½æ•°åå­—           tobase64 - åŠ å¯†å‡½æ•°
+å‡½æ•°åŸå‹           int unsigned tobase64(unsigned char *dest, unsigned int destsizebytes, const unsigned char *src, unsigned int srcbytes)
+å‡½æ•°æ‰€åœ¨å¤´æ–‡ä»¶      crypt.h
+å‡½æ•°çš„è¯¦ç»†æè¿°      srcï¼šç­‰å¾…è¢«åŠ å¯†çš„æ•°æ®ï¼›
+                  destï¼šå­˜æ”¾åŠ å¯†åçš„æ•°æ®ï¼›
+				  srcbytesï¼šè¢«åŠ å¯†æ•°æ®çš„å­—èŠ‚æ•°ï¼Œä¹Ÿå°±æ˜¯é•¿åº¦ï¼›
+				  destsizebytesï¼šdestæŒ‡å‘çš„ç¼“å†²åŒºçš„é•¿åº¦ï¼Œæ ¹æ®Base64ç¼–ç çš„ç‰¹ç‚¹ï¼Œ
+				            destsizebytes = ((src - 1) / 3 + 1) * 4 + 1; å‡½æ•°æ£€æŸ¥
+			     	è¿™ä¸ªå…³ç³»ï¼Œå¦‚æœ destsizebytes çš„å€¼å°äº ((src - 1) / 3 + 1) * 4 + 1ï¼Œåˆ™è¿”å›0ã€‚
+å‡½æ•°è¿”å›å€¼         æˆåŠŸè¿”å›å®é™…é•¿åº¦ï¼Œå¤±è´¥è¿”å› 0ã€‚
 *--------------------------------------------------------------------------*/
 static int unsigned tobase64(unsigned char *dest, unsigned int destsizebytes, const unsigned char *src, unsigned int srcbytes)
 {
 	const unsigned char EnBase64Tab[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 	//const char EnBase64Tab[] = "#$abcdefghijklmNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMnopqrstuvwxyz";
-    unsigned char c1, c2, c3; /* Èı¸ö×Ö½Ú */
+    unsigned char c1, c2, c3; /* ä¸‰ä¸ªå­—èŠ‚ */
     int n_div, n_mod, i;
 	unsigned char *pdest;
 
@@ -599,13 +599,13 @@ static int unsigned tobase64(unsigned char *dest, unsigned int destsizebytes, co
 		return 0;
 	}
 
-	if(n_mod == 1) { /* ¶ÔÓàÏÂµÄÒ»¸ö×Ö½Ú±àÂë */
+	if(n_mod == 1) { /* å¯¹ä½™ä¸‹çš„ä¸€ä¸ªå­—èŠ‚ç¼–ç  */
 	    c1 = *src++;
         *pdest++ = EnBase64Tab[c1 >> 2];
 		*pdest++ = EnBase64Tab[(c1 & 0x03) << 4];
 		*pdest++ = '=';
 		*pdest++ = '=';
- 	} else if(n_mod == 2) { /* ¶ÔÓàÏÂµÄ¶ş¸ö×Ö½Ú±àÂë */
+ 	} else if(n_mod == 2) { /* å¯¹ä½™ä¸‹çš„äºŒä¸ªå­—èŠ‚ç¼–ç  */
        c1 = *src++;
 	   c2 = *src++;
 	   *pdest++ = EnBase64Tab[c1 >> 2];
